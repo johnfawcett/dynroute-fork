@@ -3,13 +3,13 @@
 # For licensing information, please see the file named LICENSE located in the module directory
 #
 # FreePBX language template for dynroute
-# Copyright (C) 2008-2022 Sangoma Technologies, Inc.
+# Copyright (C) 2008-2024 Sangoma Technologies, Inc.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 09:27+0000\n"
+"POT-Creation-Date: 2024-04-25 11:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,10 +54,6 @@ msgstr ""
 
 #: views/form.php:202
 msgid "Announcement"
-msgstr ""
-
-#: dynroute.i18n.php:6
-msgid "Applications"
 msgstr ""
 
 #: views/form.php:759
@@ -122,10 +118,6 @@ msgstr ""
 msgid "Duplicate"
 msgstr ""
 
-#: page.dynroute.php:52
-msgid "Dyname Route Name"
-msgstr ""
-
 #: Dynroute.class.php:26
 #: page.dynroute.php:30
 msgid "Dynamic Route"
@@ -159,6 +151,7 @@ msgstr ""
 msgid "Dynamic Route Lookup Source"
 msgstr ""
 
+#: page.dynroute.php:52
 #: views/form.php:122
 msgid "Dynamic Route Name"
 msgstr ""
@@ -176,11 +169,6 @@ msgstr ""
 #: functions.inc.php:440
 #, php-format
 msgid "Dynamic Route: %s / Option: %s"
-msgstr ""
-
-#: dynroute.i18n.php:4
-#: dynroute.i18n.php:10
-msgid "Dynamic Routes"
 msgstr ""
 
 #: views/form.php:44
@@ -369,15 +357,6 @@ msgstr ""
 
 #: Dynroute.class.php:105
 msgid "Reset"
-msgstr ""
-
-#: dynroute.i18n.php:8
-msgid ""
-"Routes calls based on dynamically calculated information that can be taken "
-"from a mysql database or via odbc with any supported database, from asterisk "
-"variables, from a url or an agi script. \t\tParameters to the lookups can "
-"combine dtmf input, asterisk variables, or values saved from previously "
-"executed dynamic routes on the same call."
 msgstr ""
 
 #: views/form.php:405
