@@ -1,20 +1,22 @@
-<?php
-// Copyright (c) 2015-2022 John Fawcett
-// This is a dervied work licenced under GPL V3 or later
-// The original file was published by Sagoma Technologies in
-// Freepbx IVR module
-?>
-<a href="config.php?display=dynroute" class = "list-group-item <?php echo ($_REQUEST['id'] == ''?'hidden':'')?>"><i class="fa fa-list"></i>&nbsp;<?php echo _("List Dynamc Routes")?></a>
-<a href="config.php?display=dynroute&action=add" class = "list-group-item"><i class="fa fa-plus"></i>&nbsp;<?php echo _("Add Dynamic Route")?></a>
-<?php if($_REQUEST['action'] != ''){
-?>
-<table id="dynroutenavgrid" data-url="ajax.php?module=dynroute&command=getJSON&jdata=grid" data-cache="false" data-height="299" data-toggle="table" class="table table-striped">
+<div id="toolbar-dynroutebnav">
+<a href="config.php?display=dynroute" class = "btn btn-default"><i class="fa fa-list"></i>&nbsp;<?php echo _("List Dynamic Routes")?></a>
+<a href="config.php?display=dynroute&action=add" class = "btn btn-default"><i class="fa fa-plus"></i>&nbsp;<?php echo _("Add Dynamic Route")?></a>
+</div>
+<table id="dynroutenavgrid"
+ 		data-search="true"
+		data-toolbar="#toolbar-dynroutebnav"
+		data-url="ajax.php?module=dynroute&command=getJSON&jdata=grid"
+		data-cache="false"
+		data-toggle="table" 
+		class="table">
 	<thead>
 			<tr>
-			<th data-field="link" data-formatter="bnavFormatter"><?php echo _("Dynamic Route List")?></th>
+			<th data-field="name" data-sortable="true"><?php echo _("Dynamic Route List")?></th>
 		</tr>
 	</thead>
 </table>
-
-<?php
-}
+<script type="text/javascript">
+	$("#dynroutenavgrid").on('click-row.bs.table',function(e,row,elem){
+		window.location = '?display=dynroute&action=edit&id='+row['id'];
+	})
+</script>
