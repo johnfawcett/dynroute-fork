@@ -190,7 +190,7 @@ function dynroute_get_entries($id) {
 	global $db;
 
 	//+0 to convert string to an integer
-	$sql = "SELECT selection, dest, description FROM dynroute_dests where dynroute_id='$id' ORDER BY selection+0";
+	$sql = "SELECT selection, dest, description FROM dynroute_dests where dynroute_id= ? ORDER BY selection + 0";
 	$res = $db->getAll($sql, array($id), DB_FETCHMODE_ASSOC);
 	if ($db->IsError($res)) {
 		die_freepbx($res->getDebugInfo());

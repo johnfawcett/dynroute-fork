@@ -4,7 +4,11 @@
 // The original file was published by Sagoma Technologies in
 // Freepbx IVR module
 
+$freepbx = FreePBX::Create();
+$request = $_REQUEST;
 extract($request, EXTR_SKIP);
+$infohtml = '';
+$delURL = '';
 if($action == 'add'){
 	$heading = _("Add Dynamic Route");
 	$deet = array('id', 'name', 'description', 'sourcetype','enable_substitutions',
@@ -816,11 +820,6 @@ foreach ($hooks as $key => $value) {
 						</form>
 						<?php echo $hookhtml?>
 					</div>
-				</div>
-			</div>
-			<div class="col-sm-3 bootnav <?php echo $fw_popover?'hidden':''?>">
-				<div class="list-group">
-					<?php echo load_view(__DIR__.'/rnav.php')?>
 				</div>
 			</div>
 		</div>

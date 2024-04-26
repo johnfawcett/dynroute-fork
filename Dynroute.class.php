@@ -4,8 +4,16 @@
 // The original file was published by Sagoma Technologies in
 // Freepbx IVR module
 namespace FreePBX\modules;
+use BMO;
 use PDO;
-class Dynroute extends \FreePBX_Helpers implements \BMO {
+class Dynroute extends \FreePBX_Helpers implements BMO {
+	const DEFAULTS = [
+                'display' => '',
+                'action' => '',
+                'id' => '',
+                'name' => 'New Dynamic Route',
+                'description' => '',
+        ];
 	public function __construct($freepbx = null) {
 		if ($freepbx == null) {
 			throw new Exception("Not given a FreePBX Object");
@@ -80,7 +88,11 @@ class Dynroute extends \FreePBX_Helpers implements \BMO {
 		$sql .= ' ORDER BY name';
 
 		$sth = $this->Database->prepare($sql);
-		$sth->execute(array(":id" => $id));
+		if($id) {
+			$sth->execute(array(":id" => $id));
+		} else {
+			$sth->execute();
+		}
 		$res = $sth->fetchAll();
 		if ($id && isset($res[0])) {
 			return $res[0];
@@ -179,5 +191,20 @@ class Dynroute extends \FreePBX_Helpers implements \BMO {
 			$final[$item['dynroute_id']][] = $item;
 		}
 		return $final;
+	}
+	public function getRightNav($request) {
+		if(isset($request['action']) && ($request['action'] == 'edit' || $request['action'] == 'add')){
+			return load_view(__DIR__."/views/rnav.php",array('request' => $request));
+		}
+	}
+	public function showPage(){
+		if(empty($_GET['action']) && empty($_GET['id']) || $_GET['action'] === 'delete'){
+			 return load_view(__DIR__ . '/views/grid.php');
+		}
+		$vars['dynroute'] = self::DEFAULTS;
+		if(!empty($_GET['id'])){
+			$vars['dynroute'] = $this->getDetails($_GET['id']);
+		}
+		return load_view(__DIR__ . '/views/form.php',$vars);
 	}
 }
