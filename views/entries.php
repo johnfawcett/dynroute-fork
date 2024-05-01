@@ -22,7 +22,7 @@ foreach ($entries as $e) {
 				array(
 					'name'			=> 'entries[ext][]',
 					'value'			=> $e['selection'],
-					'placeholder'	=> _('value to be matched'),
+					'placeholder'		=> _('value to be matched'),
 					'required'		=> ''
 				)
 			);
@@ -33,6 +33,14 @@ foreach ($entries as $e) {
 	} else {
 		$row[] = drawselects($e['dest'], $count, false, false) . form_hidden('entries[goto][]', '');
 	}
+
+	 //add description
+	$row[] = form_input(
+				array(
+					'name'			=> 'entries[description][]',
+                                        'value'			=> $e['description'],
+				)
+			);
 
 	//delete buttom
 	$row[] = '<a href="#" alt="'
