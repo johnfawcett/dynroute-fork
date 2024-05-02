@@ -392,7 +392,7 @@ function dynroute_draw_entries($id){
 		}
 	}
 
-	$entries['blank'] = array('selection' => '', 'dest' => '');
+	$entries['blank'] = array('selection' => '', 'dest' => '', 'description' => '');
 	//assign to a vatriable first so that it can be passed by reference
 	$array = array('id' => '', 'ext' => '');
 	$entries['blank']['hooks'] = mod_func_iterator('draw_entries_dynroute', $array);
