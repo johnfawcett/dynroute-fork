@@ -72,7 +72,7 @@ function dynroute_get_config($engine) {
 
 				// variable substitutions
 
-				if ($dynroute['enable_substitutions']=='CHECKED')
+				if (isset($query) && ($dynroute['enable_substitutions']=='CHECKED'))
 				{
 					$query = str_replace('[NUMBER]', '${CALLERID(num)}', $query);
 					$query = str_replace('[INPUT]', '${dtmfinput}', $query);
